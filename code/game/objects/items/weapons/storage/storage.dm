@@ -12,6 +12,7 @@
 	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
 	var/list/is_seeing = new/list() //List of mobs which are currently seeing the contents of this item's storage
+	var/dynamic_icon = FALSE
 	var/max_w_class = 3 //Max size of objects that this object can store (in effect only if can_hold isn't set)
 	var/max_storage_space = 8 //The sum of the storage costs of all the items in this storage item.
 	var/storage_slots = null //The number of storage slots in this container.
@@ -377,6 +378,12 @@
 			usr << "<span class='notice'>[src] cannot hold [W] as it's a storage item of the same size.</span>"
 		return FALSE //To prevent the stacking of same sized storage items.
 
+	if (dynamic_icon == TRUE)
+		var/storedammo = 0
+		var/antitank_state = 0
+		storedammo = num2text(total_storage_space)
+		antitank_state = addtext("antitank",storedammo)
+		icon_state = antitank_state
 	return TRUE
 
 //This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
@@ -440,6 +447,15 @@
 	if (W.maptext)
 		W.maptext = ""
 	W.on_exit_storage(src)
+	if (dynamic_icon == TRUE)
+		var/storedammo = 0
+		var/antitank_state = 0
+		var/new_ammo = 0
+		storedammo = copytext(icon_state,9,11)
+		new_ammo = text2num(storedammo)-1
+		new_ammo = num2text(new_ammo)
+		antitank_state = addtext("antitank",new_ammo)
+		icon_state = antitank_state
 	update_icon()
 	return TRUE
 
