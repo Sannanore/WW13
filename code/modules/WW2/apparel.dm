@@ -808,8 +808,8 @@
 /obj/item/weapon/storage/belt/soviet
 	name = "Soviet belt pouch"
 	desc = "A belt that can hold gear like pistols, ammo and other things."
-	icon_state = "gerbelt"
-	item_state = "gerbelt"
+	icon_state = "sovbelt"
+	item_state = "sovbelt"
 	storage_slots = 12
 	max_w_class = 3
 	max_storage_space = 24
@@ -824,15 +824,14 @@
 		/obj/item/weapon/melee/classic_baton,
 		/obj/item/flashlight,
 		/obj/item/weapon/handcuffs,
-		/obj/item/ammo_casing/a145,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/canteen
 		)
 
 /obj/item/weapon/storage/belt/soviet_basic
 	name = "Small soviet belt pouch"
 	desc = "A basic soviet belt pouch capable of storing a small arms handgun, handgun magazines, gauze and your trustyworthy shovel."
-	icon_state = "gerbelt"
-	item_state = "gerbelt"
+	icon_state = "sovbelt"
+	item_state = "sovbelt"
 	storage_slots = 6
 	max_w_class = 3
 	max_storage_space = 12
@@ -843,6 +842,9 @@
 		/obj/item/ammo_magazine/c762mm_tokarev,
 		/obj/item/ammo_magazine/c45m,
 		/obj/item/ammo_magazine/luger,
+		/obj/item/ammo_magazine/mosin,
+		/obj/item/ammo_magazine/c762x63,
+		/obj/item/ammo_magazine/kar98k,
 		/obj/item/weapon/gauze_pack,
 		/obj/item/weapon/shovel/spade/russia,
 		/obj/item/weapon/shovel/spade/german,
@@ -858,11 +860,24 @@
 	new /obj/item/weapon/shovel/spade/russia(src)
 
 /obj/item/weapon/storage/belt/soviet/anti_tank_crew
+	name = "Antitank belt-pouch"
+	desc = "A belt-pouch that can hold 14.5mm rounds of PTRD in large quantities."
+	icon_state = "antitank"
+	item_state = "antitank"
+	storage_slots = 14
+	max_w_class = 3
+	dynamic_icon = TRUE
+	max_storage_space = 14
+	can_hold = list(
+		/obj/item/ammo_casing/a145,
+		)
+
 /obj/item/weapon/storage/belt/soviet/anti_tank_crew/New()
 	..()
 
-	for (var/v in 1 to 12)
+	for (var/v in 1 to 9)
 		new /obj/item/ammo_casing/a145(src)
+	icon_state = "antitank9"
 
 /obj/item/weapon/storage/belt/soviet/MP/New()
 	..()
@@ -889,21 +904,19 @@
 		/obj/item/weapon/attachment,
 		/obj/item/weapon/material/knife,
 		/obj/item/weapon/wrench,
-
 		/obj/item/weapon/gun/projectile/pistol,
 		/obj/item/weapon/gun/projectile/revolver,
 		/obj/item/weapon/melee/classic_baton,
 		/obj/item/flashlight,
 		/obj/item/weapon/handcuffs,
-		/obj/item/ammo_casing/a145,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/canteen
 		)
 
 /obj/item/weapon/storage/belt/japan
 	name = "Japanese belt pouch"
 	desc = "A belt that can hold gear like pistols, ammo and other things."
-	icon_state = "gerbelt"
-	item_state = "gerbelt"
+	icon_state = "japbelt"
+	item_state = "japbelt"
 	storage_slots = 12
 	max_w_class = 3
 	max_storage_space = 24
@@ -918,7 +931,6 @@
 		/obj/item/weapon/melee/classic_baton,
 		/obj/item/flashlight,
 		/obj/item/weapon/handcuffs,
-		/obj/item/ammo_casing/a145,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/canteen
 		)
 /obj/item/weapon/storage/belt/usa
@@ -940,7 +952,6 @@
 		/obj/item/weapon/melee/classic_baton,
 		/obj/item/flashlight,
 		/obj/item/weapon/handcuffs,
-		/obj/item/ammo_casing/a145,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/canteen
 		)
 
@@ -963,15 +974,14 @@
 		/obj/item/weapon/melee/classic_baton,
 		/obj/item/flashlight,
 		/obj/item/weapon/handcuffs,
-		/obj/item/ammo_casing/a145,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/canteen
 		)
 
 /obj/item/weapon/storage/belt/holster
 	name = "Holster belt "
 	desc = "A belt that can hold almost anything that you want."
-	icon_state = "belt_holster"
-	item_state = "belt_holster"
+	icon_state = "sovbelt"
+	item_state = "sovbelt"
 	storage_slots = 12
 	max_w_class = 3
 	max_storage_space = 24
@@ -979,8 +989,8 @@
 /obj/item/weapon/storage/belt/german_basic
 	name = "German soldier belt"
 	desc = "A basic belt. Only capable of storing a small arms pistol, clips, rations, gauze and a shovel."
-	icon_state = "gerbelt"
-	item_state = "gerbelt"
+	icon_state = "small_gerbelt"
+	item_state = "small_gerbelt"
 	storage_slots = 6
 	max_w_class = 3
 	max_storage_space = 12
@@ -991,6 +1001,9 @@
 		/obj/item/ammo_magazine/c762mm_tokarev,
 		/obj/item/ammo_magazine/c45m,
 		/obj/item/ammo_magazine/luger,
+		/obj/item/ammo_magazine/mosin,
+		/obj/item/ammo_magazine/c762x63,
+		/obj/item/ammo_magazine/kar98k,
 		/obj/item/weapon/gauze_pack,
 		/obj/item/weapon/shovel/spade/german,
 		/obj/item/weapon/shovel/spade/russia,
@@ -1006,6 +1019,7 @@
 	new /obj/item/weapon/shovel/spade/german(src)
 
 /obj/item/weapon/storage/belt/german/anti_tank_crew
+
 /obj/item/weapon/storage/belt/german/anti_tank_crew/New()
 	..()
 
@@ -1100,7 +1114,6 @@
 		/obj/item/weapon/melee/classic_baton,
 		/obj/item/flashlight,
 		/obj/item/weapon/handcuffs,
-		/obj/item/ammo_casing/a145,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/canteen
 		)
 
